@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Find the possible combinations of a string and store them in a MAP? 
+
+        const Maps = new Map();
+        var index = 0;
+        function combination(string) {
+            var myFunction = function (current, rest, arr) {
+                if (!current && !rest) {
+                    return;
+                }
+                else if (!rest) {
+                    arr.push(current);
+                    Maps.set(index, arr[index]);
+                    index++;
+                } else {
+                    myFunction(current + rest[0], rest.slice(1), arr);
+                    myFunction(current, rest.slice(1), arr);
+                }
+                return arr;
+            };
+            return myFunction('', string, []);
+        }
+        console.log(combination('combinations'));
+        console.log(Maps);
+
+        
+
+    </script>
+</body>
+</html>
